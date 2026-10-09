@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Discover Luna's Kitchen menu, burgers, pasta, crispy chicken, desserts, drinks and special meal deals.">
+    <link rel="icon" type="image/png" href="luna-favicon.png">
+
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Menu | Luna's Kitchen</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Shared stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --bg: #151316;
+            --card: #211e22;
+            --pink: #f3a6bd;
+            --white: #f8f3f5;
+            --muted: #b9afb5;
+            --border: #393139;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background: #100f11;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar-brand {
+            color: var(--pink) !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--white) !important;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--pink) !important;
+        }
+
+        .btn-pink {
+            background: var(--pink);
+            color: #21151b;
+            border: 1px solid var(--pink);
+            border-radius: 25px;
+            padding: 10px 22px;
+            font-weight: 700;
+        }
+
+        .btn-pink:hover {
+            background: #ffd0de;
+            color: #21151b;
+        }
+
+        .menu-hero {
+            padding: 85px 0 65px;
+            background: radial-gradient(ellipse at top right, #54304355, transparent 60%);
+        }
+
+        .eyebrow {
+            color: var(--pink);
+            font-size: .78rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .menu-hero h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(2.8rem, 7vw, 4.8rem);
+            margin: 15px 0;
+        }
+
+        .menu-hero h1 span,
+        .section-heading h2 span {
+            color: var(--pink);
+        }
+
+        .menu-hero p.description {
+            max-width: 600px;
+            color: var(--muted);
+            margin: 0 auto 25px;
+            line-height: 1.8;
+        }
+
+        .section-padding {
+            padding: 65px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin: 10px 0;
+        }
+
+        .section-heading>p:last-child {
+            color: var(--muted);
+        }
+
+        .demo-notice {
+            color: var(--muted);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: .85rem;
+            margin: 25px 0;
+        }
+
+        .demo-notice span {
+            color: var(--pink);
+        }
+
+        .menu-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 35px 0 45px;
+        }
+
+        .filter-btn {
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: transparent;
+            color: var(--white);
+            padding: 9px 17px;
+            transition: .2s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--pink);
+            border-color: var(--pink);
+            color: #21151b;
+        }
+
+        .menu-section {
+            margin-bottom: 65px;
+            scroll-margin-top: 90px;
+        }
+
+        .category-heading {
+            margin-bottom: 25px;
+        }
+
+        .category-heading h2 {
+            font-family: Georgia, serif;
+            font-size: 2rem;
+        }
+
+        .category-heading p:last-child {
+            color: var(--muted);
+        }
+
+        .menu-card {
+            height: 100%;
+            overflow: hidden;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            transition: transform .25s, border-color .25s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--pink);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .menu-card-body {
+            padding: 20px;
+        }
+
+        .item-label {
+            color: var(--pink);
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
+        }
+
+        .item-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .item-title-row h3 {
+            font-size: 1.08rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .item-price {
+            color: var(--pink);
+            font-size: 1rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .menu-card-body>p {
+            color: var(--muted);
+            font-size: .9rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        .deals-section {
+            background: #19151b;
+            border-top: 1px solid var(--border);
+        }
+
+        .deal-includes {
+            display: block;
+            margin-top: 15px;
+            padding-top: 13px;
+            border-top: 1px solid var(--border);
+            color: var(--pink);
+            font-size: .8rem;
+            line-height: 1.7;
+        }
+
+        .footer {
+            background: #100f11;
+            padding: 28px 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            text-align: center;
+            font-size: .85rem;
+        }
+
+        .footer strong {
+            color: var(--pink);
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 575px) {
+            .menu-hero {
+                padding: 60px 0 45px;
+            }
+
+            .menu-card img {
+                height: 190px;
+            }
+
+            .menu-filters {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                font-size: .85rem;
+                padding: 8px 12px;
+            }
+
+            .section-padding {
+                padding: 45px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Luna's Kitchen</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu"
+                aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-pink mt-2 mt-lg-0" href="#meal-deals">Meal Deals</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="menu-hero text-center">
+        <div class="container">
+            <p class="eyebrow">GOOD FOOD, BEAUTIFUL MOMENTS</p>
+            <h1>Discover Our <span>Menu.</span></h1>
+            <p class="description">
+                From crispy favorites to comforting pasta and irresistible desserts,
+                discover something delicious for every craving.
+            </p>
+            <a href="#full-menu" class="btn btn-pink">Explore the Menu</a>
+        </div>
+    </header>
+
+    <!-- SPECIAL DEALS -->
+    <section class="section-padding deals-section" id="meal-deals">
+        <div class="container">
+            <div class="section-heading text-center">
+                <p class="eyebrow">MADE FOR SHARING</p>
+                <h2>Special <span>Meal Deals</span></h2>
+                <p>More favorites, more to share.</p>
+            </div>
+
+            <div class="demo-notice">
+                <span>✦</span>
+                Portfolio demo: all prices are fictional estimates in Egyptian pounds (EGP).
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4" data-category="offers">
+                    <article class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+                            alt="Classic beef cheeseburger" loading="lazy">
+                        <div class="menu-card-body">
+                            <span class="item-label">Solo Meal</span>
+                            <div class="item-title-row">
+                                <h3>Classic Burger Combo</h3>
+                                <span class="item-price">229 EGP</span>
+                            </div>
+                            <p>One classic beef cheeseburger with regular fries and a 330 ml soft drink.</p>
+                            <span class="deal-includes">1 burger · 1 fries · 1 drink</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-category="offers">
+                    <article class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=800&q=80"
+                            alt="Crispy chicken burger" loading="lazy">
+                        <div class="menu-card-body">
+                            <span class="item-label">Chicken Favorite</span>
+                            <div class="item-title-row">
+                                <h3>Crispy Chicken Combo</h3>
+                                <span class="item-price">219 EGP</span>
+                            </div>
+                            <p>Crispy chicken sandwich served with regular fries and a soft drink.</p>
+                            <span class="deal-includes">1 sandwich · 1 fries · 1 drink</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-category="offers">
+                    <article class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=800&q=80"
+                            alt="Juicy burgers" loading="lazy">
+                        <div class="menu-card-body">
+                            <span class="item-label">For Two</span>
+                            <div class="item-title-row">
+                                <h3>Friends Combo</h3>
+                                <span class="item-price">429 EGP</span>
+                            </div>
+                            <p>Two classic beef burgers, two regular fries, and two soft drinks.</p>
+                            <span class="deal-includes">2 burgers · 2 fries · 2 drinks</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-category="offers">
+                    <article class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&q=80"
+                            alt="Burgers and fries for sharing" loading="lazy">
+                        <div class="menu-card-body">
+                            <span class="item-label">Family Favorite</span>
+                            <div class="item-title-row">
+                                <h3>Family Feast</h3>
+                                <span class="item-price">799 EGP</span>
+                            </div>
+                            <p>Four classic burgers, two large fries, four soft drinks, and two dips.</p>
+                            <span class="deal-includes">4 burgers · 2 large fries · 4 drinks · 2 dips</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-category="offers">
+                    <article class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=80"
+                            alt="Crispy chicken bites" loading="lazy">
+                        <div class="menu-card-body">
+                            <span class="item-label">Party Box</span>
+                            <div class="item-title-row">
+                                <h3>Friends Party Box</h3>
+                                <span class="item-price">699 EGP</span>
+                            </div>
+                            <p>Two beef burgers, two crispy chicken sandwiches, large fries, six nuggets, and four
+                                drinks.</p>
+                            <span class="deal-includes">4 sandwiches · 6 nuggets · fries · 4 drinks</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4" data-category="offers">
+                    <article class="menu-card">
+                        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80"
+                            alt="Golden fried chicken" loading="lazy">
+                        <div class="menu-card-body">
+                            <span class="item-label">Chicken Feast</span>
+                            <div class="item-title-row">
+                                <h3>Crispy Chicken Family Box</h3>
+                                <span class="item-price">599 EGP</span>
+                            </div>
+                            <p>Eight chicken pieces, large fries, coleslaw, four bread rolls, and a family drink.</p>
+                            <span class="deal-includes">8 chicken pieces · fries · coleslaw · rolls · drink</span>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL MENU -->
+    <main class="section-padding" id="full-menu">
+        <div class="container">
+
+            <div class="section-heading text-center">
+                <p class="eyebrow">FRESHLY PREPARED</p>
+                <h2>The Full <span>Menu</span></h2>
+                <p>Find your next favorite.</p>
+            </div>
+
+            <!-- FILTERS -->
+            <div class="menu-filters" role="group" aria-label="Filter menu">
+                <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All Items</button>
+                <button class="filter-btn" type="button" data-filter="starters" aria-pressed="false">Starters &
+                    Sides</button>
+                <button class="filter-btn" type="button" data-filter="burgers" aria-pressed="false">Burgers</button>
+                <button class="filter-btn" type="button" data-filter="chicken" aria-pressed="false">Fried
+                    Chicken</button>
+                <button class="filter-btn" type="button" data-filter="pasta" aria-pressed="false">Pasta</button>
+                <button class="filter-btn" type="button" data-filter="wraps" aria-pressed="false">Wraps</button>
+                <button class="filter-btn" type="button" data-filter="desserts" aria-pressed="false">Desserts</button>
+                <button class="filter-btn" type="button" data-filter="drinks" aria-pressed="false">Drinks</button>
+            </div>
+
+            <!-- STARTERS -->
+            <section class="menu-section" data-section="starters">
+                <div class="category-heading">
+                    <p class="eyebrow">THE PERFECT START</p>
+                    <h2>Starters <span>& Sides</span></h2>
+                    <p>Little extras that make every meal better.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4" data-category="starters">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"
+                                alt="Crispy fries" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Classic Favorite</span>
+                                <div class="item-title-row">
+                                    <h3>Classic Fries</h3><span class="item-price">65 EGP</span>
+                                </div>
+                                <p>Golden fries with a light sprinkle of salt.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="starters">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=700&q=80"
+                                alt="Cheesy fries" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Loaded Fries</span>
+                                <div class="item-title-row">
+                                    <h3>Cheese Fries</h3><span class="item-price">100 EGP</span>
+                                </div>
+                                <p>Crispy fries topped with creamy cheese sauce.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="starters">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=80"
+                                alt="Chicken nuggets" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Crunchy Bites</span>
+                                <div class="item-title-row">
+                                    <h3>Chicken Nuggets</h3><span class="item-price">115 EGP</span>
+                                </div>
+                                <p>Six crispy chicken bites with dipping sauce.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="starters">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1639024471283-03518883512d?auto=format&fit=crop&w=700&q=80"
+                                alt="Onion rings" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Crispy Side</span>
+                                <div class="item-title-row">
+                                    <h3>Onion Rings</h3><span class="item-price">75 EGP</span>
+                                </div>
+                                <p>Golden battered onion rings with a crunchy coating.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BURGERS -->
+            <section class="menu-section" data-section="burgers">
+                <div class="category-heading">
+                    <p class="eyebrow">MADE TO SATISFY</p>
+                    <h2>Our <span>Burgers</span></h2>
+                    <p>Juicy patties, fresh toppings, and delicious sauces.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4" data-category="burgers">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"
+                                alt="Classic beef burger" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Timeless Classic</span>
+                                <div class="item-title-row">
+                                    <h3>Classic Beef Burger</h3><span class="item-price">155 EGP</span>
+                                </div>
+                                <p>Beef patty, cheese, lettuce, tomato, and house sauce.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="burgers">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?auto=format&fit=crop&w=700&q=80"
+                                alt="Double cheeseburger" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Extra Indulgence</span>
+                                <div class="item-title-row">
+                                    <h3>Double Cheese Burger</h3><span class="item-price">205 EGP</span>
+                                </div>
+                                <p>Two beef patties, double cheese, and signature sauce.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="burgers">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=700&q=80"
+                                alt="Crispy chicken burger" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Crispy Favorite</span>
+                                <div class="item-title-row">
+                                    <h3>Crispy Chicken Burger</h3><span class="item-price">145 EGP</span>
+                                </div>
+                                <p>Crispy chicken fillet, lettuce, and creamy mayonnaise.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="burgers">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=700&q=80"
+                                alt="Barbecue burger" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Smoky & Rich</span>
+                                <div class="item-title-row">
+                                    <h3>BBQ Beef Burger</h3><span class="item-price">195 EGP</span>
+                                </div>
+                                <p>Beef patty, smoky BBQ sauce, cheese, and onions.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FRIED CHICKEN -->
+            <section class="menu-section" data-section="chicken">
+                <div class="category-heading">
+                    <p class="eyebrow">CRUNCH INTO HAPPINESS</p>
+                    <h2>Fried <span>Chicken</span></h2>
+                    <p>Crunchy coating and tender chicken.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4" data-category="chicken">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=700&q=80"
+                                alt="Crispy fried chicken" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Golden Crunch</span>
+                                <div class="item-title-row">
+                                    <h3>Crispy Chicken (2 Pieces)</h3><span class="item-price">155 EGP</span>
+                                </div>
+                                <p>Two pieces of seasoned fried chicken with a crunchy crust.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="chicken">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=700&q=80"
+                                alt="Chicken strips" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Easy to Share</span>
+                                <div class="item-title-row">
+                                    <h3>Chicken Strips (5 Pieces)</h3><span class="item-price">185 EGP</span>
+                                </div>
+                                <p>Tender chicken strips with a golden crispy coating.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="chicken">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=700&q=80"
+                                alt="Spicy chicken wings" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">A Little Heat</span>
+                                <div class="item-title-row">
+                                    <h3>Hot Wings (6 Pieces)</h3><span class="item-price">145 EGP</span>
+                                </div>
+                                <p>Spicy wings seasoned with a bold blend of spices.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PASTA -->
+            <section class="menu-section" data-section="pasta">
+                <div class="category-heading">
+                    <p class="eyebrow">COMFORT IN EVERY BITE</p>
+                    <h2>Italian <span>Pasta</span></h2>
+                    <p>Comforting sauces and satisfying flavors.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4" data-category="pasta">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80"
+                                alt="Penne pasta with tomato sauce" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Vegetarian</span>
+                                <div class="item-title-row">
+                                    <h3>Penne Arrabbiata</h3><span class="item-price">145 EGP</span>
+                                </div>
+                                <p>Penne pasta in a spicy tomato and garlic sauce.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="pasta">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=700&q=80"
+                                alt="Creamy chicken pasta" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">House Favorite</span>
+                                <div class="item-title-row">
+                                    <h3>Chicken Alfredo</h3><span class="item-price">220 EGP</span>
+                                </div>
+                                <p>Pasta with grilled chicken and creamy Alfredo sauce.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="pasta">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=700&q=80"
+                                alt="Italian pasta dish" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Rich & Creamy</span>
+                                <div class="item-title-row">
+                                    <h3>Four Cheese Pasta</h3><span class="item-price">210 EGP</span>
+                                </div>
+                                <p>Creamy pasta with a blend of four cheeses.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WRAPS -->
+            <section class="menu-section" data-section="wraps">
+                <div class="category-heading">
+                    <p class="eyebrow">QUICK & DELICIOUS</p>
+                    <h2>Wraps & <span>Sandwiches</span></h2>
+                    <p>Flavorful fillings wrapped up for an easy meal.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4" data-category="wraps">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=700&q=80"
+                                alt="Chicken wrap sandwich" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Fresh Favorite</span>
+                                <div class="item-title-row">
+                                    <h3>Grilled Chicken Wrap</h3><span class="item-price">135 EGP</span>
+                                </div>
+                                <p>Grilled chicken, lettuce, tomato, and garlic sauce.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="wraps">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=700&q=80"
+                                alt="Chicken shawarma wrap" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Full of Flavor</span>
+                                <div class="item-title-row">
+                                    <h3>Crispy Chicken Wrap</h3><span class="item-price">145 EGP</span>
+                                </div>
+                                <p>Crispy chicken, fresh vegetables, and creamy sauce.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DESSERTS -->
+            <section class="menu-section" data-section="desserts">
+                <div class="category-heading">
+                    <p class="eyebrow">SAVE ROOM FOR SOMETHING SWEET</p>
+                    <h2>Sweet <span>Finishes</span></h2>
+                    <p>A little indulgence to finish your meal.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4" data-category="desserts">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80"
+                                alt="Chocolate cake" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Chocolate Lover</span>
+                                <div class="item-title-row">
+                                    <h3>Chocolate Fudge Cake</h3><span class="item-price">110 EGP</span>
+                                </div>
+                                <p>Rich chocolate cake with smooth chocolate frosting.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="desserts">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=700&q=80"
+                                alt="Cheesecake dessert" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Creamy Classic</span>
+                                <div class="item-title-row">
+                                    <h3>New York Cheesecake</h3><span class="item-price">125 EGP</span>
+                                </div>
+                                <p>Classic creamy cheesecake with a buttery biscuit base.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="desserts">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80"
+                                alt="Chocolate brownie" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Freshly Baked</span>
+                                <div class="item-title-row">
+                                    <h3>Chocolate Brownie</h3><span class="item-price">95 EGP</span>
+                                </div>
+                                <p>A soft, fudgy chocolate brownie with a rich cocoa flavor.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DRINKS -->
+            <section class="menu-section" data-section="drinks">
+                <div class="category-heading">
+                    <p class="eyebrow">SIP, RELAX, ENJOY</p>
+                    <h2>Drinks & <span>Refreshments</span></h2>
+                    <p>Refreshing drinks for every mood.</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 col-lg-4" data-category="drinks">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1629203851122-3726ecdf080e?auto=format&fit=crop&w=700&q=80"
+                                alt="Cold soft drink" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Classic Refreshment</span>
+                                <div class="item-title-row">
+                                    <h3>Soft Drinks (330 ml)</h3><span class="item-price">40 EGP</span>
+                                </div>
+                                <p>Choose from cola, lemon-lime soda, or orange soda.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="drinks">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=80"
+                                alt="Iced coffee" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Coffee Break</span>
+                                <div class="item-title-row">
+                                    <h3>Iced Latte</h3><span class="item-price">95 EGP</span>
+                                </div>
+                                <p>Chilled espresso with milk served over ice.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="drinks">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=80"
+                                alt="Chocolate milkshake" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Sweet & Cold</span>
+                                <div class="item-title-row">
+                                    <h3>Chocolate Milkshake</h3><span class="item-price">105 EGP</span>
+                                </div>
+                                <p>A thick chocolate milkshake with a creamy texture.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4" data-category="drinks">
+                        <article class="menu-card">
+                            <img src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=700&q=80"
+                                alt="Fresh lemon mint drink" loading="lazy">
+                            <div class="menu-card-body">
+                                <span class="item-label">Fresh & Zesty</span>
+                                <div class="item-title-row">
+                                    <h3>Lemon Mint</h3><span class="item-price">65 EGP</span>
+                                </div>
+                                <p>A refreshing blend of lemon and mint.</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <div class="demo-notice">
+                All menu items and prices are fictional portfolio examples.
+                They are not a live ordering service or verified restaurant prices.
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-1"><strong>Luna's Kitchen</strong></p>
+            <p class="mb-0">Made with love. Served with style.</p>
+            <p class="mt-2 mb-0">&copy; <span id="currentYear"></span> Luna's Kitchen · Portfolio Demo</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu filtering -->
+    <script>
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const menuCards = document.querySelectorAll("[data-category]");
+        const menuSections = document.querySelectorAll(".menu-section");
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const selectedCategory = button.dataset.filter;
+
+                filterButtons.forEach((item) => {
+                    const isActive = item === button;
+                    item.classList.toggle("active", isActive);
+                    item.setAttribute("aria-pressed", String(isActive));
+                });
+
+                menuCards.forEach((card) => {
+                    const category = card.dataset.category;
+                    card.hidden = selectedCategory !== "all" &&
+                        category !== selectedCategory;
+                });
+
+                menuSections.forEach((section) => {
+                    const sectionCategory = section.dataset.section;
+                    const visibleCards = section.querySelectorAll(
+                        '[data-category="' + sectionCategory + '"]:not([hidden])'
+                    );
+
+                    section.hidden =
+                        selectedCategory !== "all" &&
+                        sectionCategory !== selectedCategory;
+
+                    if (selectedCategory === "all") {
+                        section.hidden = visibleCards.length === 0;
+                    }
+                });
+
+                if (selectedCategory === "offers") {
+                    document.getElementById("meal-deals").scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>

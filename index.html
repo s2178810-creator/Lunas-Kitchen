@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/png" href="luna-favicon.png">
+
+
+
+    <title>Luna's Kitchen | Good Food, Good Mood</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #111010;
+            --bg-card: #1c191a;
+            --pink: #e8a0ad;
+            --pink-light: #f5c4cc;
+            --text-light: #f8f4f4;
+            --text-muted: #b8afb1;
+            --border-color: #393033;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: "DM Sans", sans-serif;
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: "Playfair Display", serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .text-pink {
+            color: var(--pink);
+        }
+
+        .section-padding {
+            padding: 90px 0;
+        }
+
+        .section-subtitle {
+            color: var(--pink);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            margin-bottom: 18px;
+        }
+
+        .section-description {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Navbar */
+
+        .navbar {
+            background-color: rgba(17, 16, 16, 0.97);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 0;
+        }
+
+        .navbar-brand {
+            font-family: "Playfair Display", serif;
+            color: var(--text-light);
+            font-size: 27px;
+            font-weight: 700;
+        }
+
+        .navbar-brand span {
+            color: var(--pink);
+        }
+
+        .navbar-nav .nav-link {
+            color: #ddd5d7;
+            margin-left: 16px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--pink);
+        }
+
+        .navbar-toggler {
+            border-color: var(--pink);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.15rem rgba(232, 160, 173, 0.3);
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        /* Buttons */
+
+        .btn-pink {
+            background-color: var(--pink);
+            color: #211719;
+            border: 1px solid var(--pink);
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-pink:hover {
+            background-color: var(--pink-light);
+            border-color: var(--pink-light);
+            color: #211719;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-pink {
+            color: var(--pink-light);
+            border: 1px solid var(--pink);
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-outline-pink:hover {
+            background-color: var(--pink);
+            color: #211719;
+        }
+
+        /* Hero */
+
+        .hero {
+            min-height: 690px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background:
+                linear-gradient(90deg,
+                    rgba(17, 16, 16, 0.98) 0%,
+                    rgba(17, 16, 16, 0.88) 43%,
+                    rgba(17, 16, 16, 0.25) 100%),
+                url("https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1800&q=85") center / cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            padding: 90px 0;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: var(--pink-light);
+            border: 1px solid rgba(232, 160, 173, 0.5);
+            background-color: rgba(232, 160, 173, 0.08);
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.2rem, 7vw, 5.7rem);
+            line-height: 1.08;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--pink);
+        }
+
+        .hero p {
+            color: #ded5d7;
+            max-width: 500px;
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+
+        .hero-note {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: 24px;
+        }
+
+        /* Feature strip */
+
+        .feature-strip {
+            background-color: #1b1718;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 25px 0;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .feature-icon {
+            font-size: 25px;
+            color: var(--pink);
+            margin-bottom: 6px;
+        }
+
+        .feature-item h3 {
+            font-family: "DM Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+
+        /* Menu cards */
+
+        .food-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 100%;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--pink);
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 225px;
+            object-fit: cover;
+        }
+
+        .food-card-body {
+            padding: 22px;
+        }
+
+        .food-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .food-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            min-height: 48px;
+            margin-bottom: 16px;
+        }
+
+        .food-price {
+            color: var(--pink);
+            font-size: 19px;
+            font-weight: 700;
+        }
+
+        .food-tag {
+            background-color: rgba(232, 160, 173, 0.12);
+            color: var(--pink-light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+        }
+
+        /* About section */
+
+        .about-section {
+            background-color: #191516;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 470px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .about-text {
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .about-point {
+            display: flex;
+            gap: 13px;
+            margin: 22px 0;
+        }
+
+        .about-point-icon {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(232, 160, 173, 0.12);
+            color: var(--pink);
+            border-radius: 50%;
+        }
+
+        .about-point h3 {
+            font-family: "DM Sans", sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .about-point p {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
+        /* Special offer */
+
+        .offer-section {
+            padding: 75px 0;
+        }
+
+        .offer-box {
+            background:
+                linear-gradient(100deg,
+                    rgba(30, 23, 25, 0.98),
+                    rgba(30, 23, 25, 0.82)),
+                url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1400&q=85") center / cover no-repeat;
+            border: 1px solid #5b3c43;
+            border-radius: 12px;
+            padding: 55px;
+        }
+
+        .offer-box h2 {
+            font-size: clamp(2rem, 4vw, 3.3rem);
+            margin-bottom: 15px;
+        }
+
+        .offer-box p {
+            color: #d0c3c6;
+            max-width: 580px;
+        }
+
+        .offer-price {
+            color: var(--pink);
+            font-size: 29px;
+            font-weight: 700;
+            margin: 15px 0 25px;
+        }
+
+        /* Reviews */
+
+        .review-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 28px;
+            height: 100%;
+        }
+
+        .review-stars {
+            color: var(--pink);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .review-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .review-author {
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .review-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 20px;
+        }
+
+        /* CTA */
+
+        .cta-section {
+            background-color: #241b1e;
+            text-align: center;
+            padding: 75px 20px;
+            border-top: 1px solid #4a3036;
+            border-bottom: 1px solid #4a3036;
+        }
+
+        .cta-section p {
+            color: #d0c3c6;
+            max-width: 560px;
+            margin: 0 auto 25px;
+        }
+
+        /* Footer */
+
+        footer {
+            background-color: #0b0a0a;
+            padding: 55px 0 20px;
+        }
+
+        .footer-brand {
+            font-family: "Playfair Display", serif;
+            color: var(--text-light);
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+        .footer-brand span {
+            color: var(--pink);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 13px;
+            max-width: 320px;
+            margin-top: 15px;
+        }
+
+        footer h3 {
+            font-family: "DM Sans", sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 9px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--pink);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            margin-top: 35px;
+            padding-top: 20px;
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 767px) {
+            .hero {
+                min-height: 600px;
+                background-position: 60% center;
+            }
+
+            .hero-content {
+                padding: 75px 0;
+            }
+
+            .section-padding {
+                padding: 65px 0;
+            }
+
+            .about-image {
+                height: 320px;
+                margin-bottom: 30px;
+            }
+
+            .offer-box {
+                padding: 30px 22px;
+            }
+
+            .food-card img {
+                height: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">
+                Luna's <span>Kitchen.</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Our Menu</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn btn-pink" href="menu.html">
+                            Explore Menu
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+
+                <span class="hero-label">
+                    GOOD FOOD. GOOD MOOD.
+                </span>
+
+                <h1>
+                    Your cravings,<br>
+                    our <span>passion.</span>
+                </h1>
+
+                <p>
+                    From juicy burgers to creamy pasta and crispy chicken,
+                    discover comfort food made to turn an ordinary day
+                    into something special.
+                </p>
+
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="menu.html" class="btn btn-pink">
+                        Explore Our Menu
+                    </a>
+
+                    <a href="#about" class="btn btn-outline-pink">
+                        Get to Know Us
+                    </a>
+                </div>
+
+                <div class="hero-note">
+                    Fresh flavors · Comfort food · Made with love
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Feature Strip -->
+    <section class="feature-strip">
+        <div class="container">
+            <div class="row g-3">
+
+                <div class="col-6 col-lg-3">
+                    <div class="feature-item">
+                        <div class="feature-icon">♡</div>
+                        <h3>Made with Love</h3>
+                        <p>Comfort in every bite</p>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="feature-item">
+                        <div class="feature-icon">✦</div>
+                        <h3>Fresh Ingredients</h3>
+                        <p>Flavor comes first</p>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="feature-item">
+                        <div class="feature-icon">☼</div>
+                        <h3>Something for Everyone</h3>
+                        <p>Cravings of every kind</p>
+                    </div>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <div class="feature-item">
+                        <div class="feature-icon">☆</div>
+                        <h3>Good Vibes Only</h3>
+                        <p>Your happy food place</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Popular Menu -->
+    <section class="section-padding" id="popular-menu">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <p class="section-subtitle">A LITTLE TASTE OF LUNA'S</p>
+                <h2 class="section-title">Our <span class="text-pink">Favorites</span></h2>
+                <p class="section-description">
+                    Meet the dishes everyone loves. Whether you're craving
+                    something cheesy, crispy, or sweet, there's a favorite
+                    waiting for you.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Food 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <article class="food-card">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80"
+                            alt="Juicy double cheeseburger" loading="lazy">
+
+                        <div class="food-card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="food-tag">BESTSELLER</span>
+                                <span class="food-price">EGP 185</span>
+                            </div>
+
+                            <h3>Classic Luna Burger</h3>
+
+                            <p>
+                                A juicy beef patty, melted cheese, fresh
+                                lettuce, and our signature burger sauce.
+                            </p>
+
+                            <a href="menu.html" class="btn btn-outline-pink w-100">
+                                View Full Menu
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Food 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <article class="food-card">
+                        <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80"
+                            alt="Creamy pasta served with herbs" loading="lazy">
+
+                        <div class="food-card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="food-tag">COMFORT FOOD</span>
+                                <span class="food-price">EGP 195</span>
+                            </div>
+
+                            <h3>Creamy Alfredo Pasta</h3>
+
+                            <p>
+                                Tender pasta tossed in a rich, creamy sauce
+                                with parmesan and a touch of garlic.
+                            </p>
+
+                            <a href="menu.html" class="btn btn-outline-pink w-100">
+                                View Full Menu
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Food 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <article class="food-card">
+                        <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=80"
+                            alt="Golden crispy fried chicken" loading="lazy">
+
+                        <div class="food-card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="food-tag">CRISPY FAVORITE</span>
+                                <span class="food-price">EGP 175</span>
+                            </div>
+
+                            <h3>Crispy Chicken</h3>
+
+                            <p>
+                                Golden, crunchy chicken seasoned with our
+                                special blend of spices.
+                            </p>
+
+                            <a href="menu.html" class="btn btn-outline-pink w-100">
+                                View Full Menu
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="menu.html" class="btn btn-pink">
+                    Discover All Dishes →
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- About Section -->
+    <section class="about-section section-padding" id="about">
+        <div class="container">
+            <div class="row align-items-center g-lg-5">
+
+                <div class="col-lg-6">
+                    <img class="about-image"
+                        src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=85"
+                        alt="Warm and welcoming restaurant interior" loading="lazy">
+                </div>
+
+                <div class="col-lg-6">
+
+                    <p class="section-subtitle">MORE THAN JUST FOOD</p>
+
+                    <h2 class="section-title">
+                        Welcome to <span class="text-pink">our table.</span>
+                    </h2>
+
+                    <p class="about-text">
+                        At Luna's Kitchen, we believe great food brings
+                        people together. It's about sharing a meal, catching
+                        up with friends, and creating little moments worth
+                        remembering.
+                    </p>
+
+                    <p class="about-text">
+                        Our menu brings together familiar comfort-food
+                        favorites with bold flavors and a cozy atmosphere
+                        that makes you want to stay a little longer.
+                    </p>
+
+                    <div class="about-point">
+                        <div class="about-point-icon">✓</div>
+                        <div>
+                            <h3>Food for Every Craving</h3>
+                            <p>
+                                From burgers and wraps to pasta and desserts,
+                                there's always something to love.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about-point">
+                        <div class="about-point-icon">♡</div>
+                        <div>
+                            <h3>A Place to Come Together</h3>
+                            <p>
+                                Good food tastes even better when shared
+                                with your favorite people.
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="about.html" class="btn btn-pink mt-3">
+                        Our Story
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Special Offers -->
+    <section class="offer-section">
+        <div class="container">
+
+            <div class="offer-box">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-8">
+                        <p class="section-subtitle">GOOD FOOD IS BETTER TOGETHER</p>
+
+                        <h2>
+                            Bring your friends.<br>
+                            <span class="text-pink">We'll bring the feast.</span>
+                        </h2>
+
+                        <p>
+                            Burgers, sides, and drinks made for sharing.
+                            Our Friends Combo is perfect for movie nights,
+                            catch-ups, and those extra-hungry evenings.
+                        </p>
+
+                        <div class="offer-price">
+                            EGP 429
+                            <span class="text-light fs-6 fw-normal">
+                                / Friends Combo
+                            </span>
+                        </div>
+
+                        <a href="menu.html#meal-deals" class="btn btn-pink">
+                            Explore Meal Deals →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="text-center mt-3 mb-0" style="color: var(--text-muted); font-size: 12px;">
+                Sample prices for a fictional portfolio project.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- Reviews -->
+    <section class="section-padding pt-4">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <p class="section-subtitle">KIND WORDS</p>
+                <h2 class="section-title">
+                    A little <span class="text-pink">love note.</span>
+                </h2>
+                <p class="section-description">
+                    Good food, happy moments, and memories worth sharing.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p>
+                            "The perfect place for a relaxed meal with
+                            friends. The menu has something for everyone,
+                            and the whole vibe feels so cozy."
+                        </p>
+                        <p class="review-author">Sarah M.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p>
+                            "Burger night just got better. Love the
+                            combination of comfort food and the stylish,
+                            welcoming atmosphere."
+                        </p>
+                        <p class="review-author">Omar K.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p>
+                            "A little bit of everything I crave, from
+                            crispy chicken to sweet treats. Definitely
+                            the kind of menu I'd come back to."
+                        </p>
+                        <p class="review-author">Mariam A.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="review-note text-center">
+                Note: These are fictional sample testimonials created
+                for the portfolio demo.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+
+            <p class="section-subtitle">YOUR NEXT FAVORITE MEAL AWAITS</p>
+
+            <h2 class="section-title">
+                Hungry <span class="text-pink">yet?</span>
+            </h2>
+
+            <p>
+                Take a look at our menu and find something delicious
+                to make your day a little better.
+            </p>
+
+            <a href="menu.html" class="btn btn-pink">
+                Find Your Favorite →
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <!-- Brand -->
+                <div class="col-lg-5">
+                    <a class="footer-brand" href="index.html">
+                        Luna's <span>Kitchen.</span>
+                    </a>
+
+                    <p class="footer-text mt-3">
+                        Good food, warm moments, and a little something
+                        special in every bite. Welcome to Luna's Kitchen.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-6 col-lg-2">
+                    <h3 class="footer-heading">Quick Links</h3>
+
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Explore -->
+                <div class="col-6 col-lg-2">
+                    <h3 class="footer-heading">Explore</h3>
+
+                    <ul class="footer-links">
+                        <li><a href="menu.html#starters">Starters</a></li>
+                        <li><a href="menu.html#burgers">Burgers</a></li>
+                        <li><a href="menu.html#pasta">Pasta</a></li>
+                        <li><a href="menu.html#desserts">Desserts</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="col-lg-3">
+                    <h3 class="footer-heading">Say Hello</h3>
+
+                    <ul class="footer-links">
+                        <li>
+                            <a href="contact.html">Get in touch with us</a>
+                        </li>
+                        <li>
+                            <a href="menu.html">Discover the menu</a>
+                        </li>
+                    </ul>
+
+                    <p class="footer-text">
+                        A fictional restaurant website created
+                        for a web development portfolio.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Copyright & Credit -->
+            <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+
+                <p class="mb-0">
+                    &copy; <span id="currentYear"></span>
+                    Luna's Kitchen. All rights reserved.
+                </p>
+
+                <p class="mb-0">
+                    Designed &amp; Developed by
+                    <span style="color: var(--pink); font-weight: 600;">
+                        Samar Essam El Sayed
+                    </span>
+                    ♡
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>

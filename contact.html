@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | Luna's Kitchen</title>
+    <meta name="description" content="Get in touch with Luna's Kitchen. We'd love to hear from you.">
+
+    <link rel="icon" type="image/png" href="luna-favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand footer-brand" href="index.html">
+                Luna's <span>Kitchen.</span>
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto gap-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Our Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <header class="container section-padding text-center">
+        <p class="text-uppercase" style="color: var(--pink); letter-spacing: 3px;">
+            We'd love to hear from you
+        </p>
+
+        <h1>Let's <span style="color: var(--pink);">Talk.</span></h1>
+
+        <p class="mx-auto" style="max-width: 600px;">
+            Have a question or a suggestion? Send us a message.
+            We're always happy to hear from our guests.
+        </p>
+    </header>
+
+    <!-- Contact Content -->
+    <main class="container pb-5">
+        <div class="row g-4">
+
+            <!-- Contact Information -->
+            <div class="col-lg-5">
+                <div class="p-4 h-100 rounded-4"
+                     style="background: #171416; border: 1px solid #35282e;">
+
+                    <h2 class="h3 mb-4">Get in Touch</h2>
+
+                    <div class="mb-4">
+                        <h3 class="h6" style="color: var(--pink);">
+                            Email
+                        </h3>
+                        <p class="mb-0">
+                            hello@lunaskitchen.example
+                        </p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h3 class="h6" style="color: var(--pink);">
+                            Location
+                        </h3>
+                        <p class="mb-0">Cairo, Egypt — Demo Location</p>
+                    </div>
+
+                    <div>
+                        <h3 class="h6" style="color: var(--pink);">
+                            Opening Hours
+                        </h3>
+                        <p class="mb-0">
+                            Daily — Sample Schedule
+                        </p>
+                    </div>
+
+                    <p class="mt-4 small text-secondary">
+                        This is a fictional restaurant website.
+                        Contact details and opening hours are illustrative.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+             <div class="col-lg-7">
+                <div class="p-4 rounded-4"
+                     style="background: #171416; border: 1px solid #35282e;">
+
+                    <h2 class="h3 mb-4">Send Us a Message</h2>
+
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">
+                                Your Name
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your name"
+                                required
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">
+                                Your Email
+                            </label>
+                            <input
+                                type="email"
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">
+                                Subject
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="subject"
+                                name="subject"
+                                placeholder="What is your message about?"
+                                required
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">
+                                Your Message
+                            </label>
+                            <textarea
+                                class="form-control"
+                                id="message"
+                                name="message"
+                                rows="5"
+                                placeholder="Write your message here..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-light">
+                            Preview Message
+                        </button>
+
+                        <p class="small text-secondary mt-3 mb-0">
+                            Demo form only. It does not send or store messages.
+                        </p>
+
+                        <div id="formFeedback" class="mt-3" role="status"
+                             aria-live="polite"></div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-5">
+        <div class="container py-4">
+
+            <div class="footer-bottom d-flex flex-column flex-md-row
+                        justify-content-between align-items-center gap-2">
+
+                <p class="mb-0">
+                    &copy; <span id="currentYear"></span> Luna's Kitchen.
+                </p>
+
+                <p class="mb-0">
+                    Designed &amp; Developed by
+                    <span style="color: var(--pink);">
+                        Samar Essam El Sayed
+                    </span>
+                    ♡
+                </p>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+            // Preview only: no message is sent or stored.
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const feedback = document.getElementById("formFeedback");
+
+            feedback.textContent =
+                "Thanks, " + name + "! This is a demo form, so your message has not been sent.";
+
+            feedback.className = "mt-3 alert alert-secondary";
+        });
+    </script>
+
+</body>
+</html>

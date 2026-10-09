@@ -1,0 +1,729 @@
+
+/* ========================================
+   LUNA'S KITCHEN - MAIN STYLESHEET
+======================================== */
+
+/* 1. COLORS & GLOBAL SETTINGS */
+:root {
+    --bg-dark: #111010;
+    --bg-card: #1c191a;
+    --bg-soft: #252122;
+
+    --pink: #e8a0ad;
+    --pink-light: #f5c4cc;
+
+    --text-light: #f8f4f4;
+    --text-muted: #b8afb1;
+
+    --border-color: #393033;
+
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Playfair Display", serif;
+    color: var(--text-light);
+    line-height: 1.2;
+}
+
+p {
+    color: var(--text-muted);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+::selection {
+    background-color: var(--pink);
+    color: var(--bg-dark);
+}
+
+
+/* 2. REUSABLE TEXT STYLES */
+
+.section-padding {
+    padding: 90px 0;
+}
+
+.section-subtitle {
+    color: var(--pink);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--text-muted);
+}
+
+
+/* 3. BUTTONS */
+
+.btn-luna {
+    display: inline-block;
+    padding: 13px 28px;
+    border: 1px solid var(--pink);
+    border-radius: 4px;
+    background-color: var(--pink);
+    color: var(--bg-dark);
+    font-size: 0.95rem;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-luna:hover {
+    background-color: transparent;
+    color: var(--pink);
+    transform: translateY(-3px);
+}
+
+.btn-luna-outline {
+    display: inline-block;
+    padding: 13px 28px;
+    border: 1px solid var(--pink);
+    border-radius: 4px;
+    background-color: transparent;
+    color: var(--pink);
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.btn-luna-outline:hover {
+    background-color: var(--pink);
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+}
+
+
+/* 4. NAVBAR */
+
+.navbar {
+    background-color: rgba(17, 16, 16, 0.96);
+    border-bottom: 1px solid var(--border-color);
+    padding: 18px 0;
+}
+
+.navbar-brand {
+    color: var(--pink) !important;
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.navbar-brand span {
+    color: var(--text-light);
+}
+
+.navbar .nav-link {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0 8px;
+    transition: var(--transition);
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--pink);
+}
+
+.navbar-toggler {
+    border: 1px solid var(--pink);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.15rem rgba(232, 160, 173, 0.25);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+
+/* 5. HERO SECTIONS */
+
+.hero-section {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: var(--bg-dark);
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.hero-title span {
+    color: var(--pink);
+}
+
+.hero-text {
+    max-width: 550px;
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+/* 6. PAGE HERO */
+
+.page-hero {
+    padding: 130px 0 75px;
+    text-align: center;
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(232, 160, 173, 0.10),
+            transparent 65%
+        ),
+        var(--bg-dark);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    margin-bottom: 18px;
+}
+
+.page-hero h1 span {
+    color: var(--pink);
+}
+
+.breadcrumb-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.breadcrumb-text a {
+    color: var(--pink);
+}
+
+
+/* 7. FEATURE STRIP */
+
+.feature-strip {
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 25px 0;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 12px;
+}
+
+.feature-item h5 {
+    color: var(--pink);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.feature-item p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+
+/* 8. FOOD & GENERAL CARDS */
+
+.food-card,
+.info-card,
+.philosophy-card,
+.contact-card {
+    height: 100%;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.food-card:hover,
+.info-card:hover,
+.philosophy-card:hover,
+.contact-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--pink);
+}
+
+.food-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.food-card:hover img {
+    transform: scale(1.04);
+}
+
+.food-card-image {
+    overflow: hidden;
+}
+
+.food-card-body,
+.info-card-body {
+    padding: 24px;
+}
+
+.food-card h3,
+.food-card h4 {
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+}
+
+.food-card p {
+    font-size: 0.95rem;
+}
+
+.food-price {
+    color: var(--pink);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.card-label {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: rgba(232, 160, 173, 0.12);
+    color: var(--pink);
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+
+/* 9. MENU FILTER BUTTONS */
+
+.filter-btn {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    padding: 9px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--pink);
+    border-color: var(--pink);
+    color: var(--bg-dark);
+}
+
+
+/* 10. ABOUT PAGE */
+
+.about-image {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.about-text p {
+    margin-bottom: 18px;
+}
+
+.philosophy-card {
+    padding: 30px 24px;
+}
+
+.philosophy-card .card-number {
+    color: var(--pink);
+    font-family: "Playfair Display", serif;
+    font-size: 2rem;
+    margin-bottom: 18px;
+}
+
+.philosophy-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.gallery-image:hover {
+    transform: scale(1.02);
+}
+
+
+/* 11. REVIEWS */
+
+.review-card {
+    height: 100%;
+    padding: 30px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.review-stars {
+    color: var(--pink);
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.review-author {
+    color: var(--text-light);
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+
+/* 12. OFFER / CTA SECTIONS */
+
+.offer-section,
+.cta-section {
+    padding: 65px 30px;
+    text-align: center;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(232, 160, 173, 0.12),
+            rgba(232, 160, 173, 0.03)
+        );
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+
+.offer-section h2,
+.cta-section h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    margin-bottom: 18px;
+}
+
+.offer-section p,
+.cta-section p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+}
+
+
+/* 13. CONTACT PAGE */
+
+.contact-card {
+    padding: 28px;
+}
+
+.contact-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: rgba(232, 160, 173, 0.12);
+    color: var(--pink);
+    border-radius: 50%;
+    font-size: 1.35rem;
+}
+
+.contact-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.contact-form-wrapper {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 35px;
+}
+
+.form-label {
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-control,
+.form-select {
+    padding: 13px 15px;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.form-control::placeholder {
+    color: #8f8588;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    border-color: var(--pink);
+    box-shadow: 0 0 0 0.2rem rgba(232, 160, 173, 0.12);
+}
+
+.form-select option {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.form-check-input {
+    background-color: var(--bg-dark);
+    border-color: var(--border-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--pink);
+    border-color: var(--pink);
+}
+
+.form-check-input:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 0.2rem rgba(232, 160, 173, 0.12);
+}
+
+.form-check-label {
+    color: var(--text-muted);
+}
+
+.contact-status {
+    margin-top: 18px;
+    color: var(--pink);
+}
+
+
+/* 14. FOOTER */
+
+.site-footer {
+    background-color: #0b0a0a;
+    border-top: 1px solid var(--border-color);
+    padding: 60px 0 25px;
+}
+
+.footer-brand {
+    color: var(--pink);
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.footer-heading {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+}
+
+.footer-links a:hover {
+    color: var(--pink);
+    padding-left: 4px;
+}
+
+.footer-bottom {
+    margin-top: 35px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+
+/* 15. SMALL ANIMATIONS */
+
+.fade-up {
+    animation: fadeUp 0.8s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* 16. RESPONSIVE DESIGN */
+
+@media (max-width: 991px) {
+    .section-padding {
+        padding: 70px 0;
+    }
+
+    .hero-section {
+        min-height: auto;
+        padding: 80px 0;
+    }
+
+    .hero-image {
+        height: 400px;
+        margin-top: 35px;
+    }
+
+    .navbar .nav-link {
+        margin: 5px 0;
+    }
+
+    .page-hero {
+        padding: 115px 0 60px;
+    }
+}
+
+@media (max-width: 767px) {
+    .section-padding {
+        padding: 55px 0;
+    }
+
+    .hero-section {
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-image {
+        height: 300px;
+    }
+
+    .about-image {
+        height: 330px;
+        margin-bottom: 25px;
+    }
+
+    .gallery-image {
+        height: 240px;
+    }
+
+    .contact-form-wrapper {
+        padding: 22px;
+    }
+
+    .offer-section,
+    .cta-section {
+        padding: 45px 20px;
+    }
+
+    .food-card img {
+        height: 220px;
+    }
+
+    .site-footer {
+        padding-top: 45px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.35rem;
+    }
+
+    .page-hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .btn-luna,
+    .btn-luna-outline {
+        padding: 11px 20px;
+    }
+
+    .contact-form-wrapper {
+        padding: 18px;
+    }
+}
+
+
+/* 17. ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
