@@ -1,4 +1,3 @@
-
 /* ========================================
    LUNA'S KITCHEN - MAIN STYLESHEET
 ======================================== */
@@ -227,11 +226,9 @@ img {
     padding: 130px 0 75px;
     text-align: center;
     background:
-        radial-gradient(
-            circle at top,
+        radial-gradient(circle at top,
             rgba(232, 160, 173, 0.10),
-            transparent 65%
-        ),
+            transparent 65%),
         var(--bg-dark);
     border-bottom: 1px solid var(--border-color);
 }
@@ -443,11 +440,9 @@ img {
     padding: 65px 30px;
     text-align: center;
     background:
-        linear-gradient(
-            135deg,
+        linear-gradient(135deg,
             rgba(232, 160, 173, 0.12),
-            rgba(232, 160, 173, 0.03)
-        );
+            rgba(232, 160, 173, 0.03));
     border: 1px solid var(--border-color);
     border-radius: 10px;
 }
@@ -718,6 +713,7 @@ img {
 /* 17. ACCESSIBILITY */
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -726,4 +722,10 @@ img {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+.designer-credit {
+    color: #f2a6b3;
+    font-size: 14px;
+    letter-spacing: 0.5px;
 }
